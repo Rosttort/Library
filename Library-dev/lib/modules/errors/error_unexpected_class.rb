@@ -3,12 +3,8 @@
 module Lib
   module Modules
     module Errors
-      class UnexpectedClassError < StandardError
+      class UnexpectedClassError < Entity::BaseError
         STANDARD_MESSAGE = 'Not expected class'
-
-        def initialize(message = STANDARD_MESSAGE)
-          super(message)
-        end
       end
     end
   end

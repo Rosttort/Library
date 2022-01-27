@@ -61,7 +61,7 @@ library.add(user4_order2)
 puts "Top readers\n"
 library.top_readers.each { |reader| puts "#{reader}\n" }
 puts "\nMost popular books\n"
-library.most_popular_books.each { |book| puts "#{book}\n" }
+library.top_books.each { |book| puts "#{book}\n" }
 puts "\nNumber of readers of the most popular books: #{library.number_of_readers_of_the_most_popular_books}"
 
 library.save

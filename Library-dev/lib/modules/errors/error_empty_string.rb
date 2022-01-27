@@ -3,12 +3,8 @@
 module Lib
   module Modules
     module Errors
-      class EmptyStringError < StandardError
+      class EmptyStringError < Entity::BaseError
         STANDARD_MESSAGE = 'String was empty'
-
-        def initialize(message = STANDARD_MESSAGE)
-          super(message)
-        end
       end
     end
   end

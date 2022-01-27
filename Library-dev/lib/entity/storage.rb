@@ -29,11 +29,11 @@ module Lib
           end
         else
           Dir.mkdir(File.join(STORAGE_DIR))
-          met1
+          output_data
         end
       end
 
-      def met1
+      def output_data
         {
           authors: [],
           books: [],

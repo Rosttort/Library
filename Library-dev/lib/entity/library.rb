@@ -23,15 +23,15 @@ module Lib
       end
 
       def top_readers(amount = 1)
-        top_objects_orders(:reader, :book, amount)
+        @orders.group_by(&:reader).sort_by { |orders| -orders.uniq.size }.first(amount).map(&:first)
       end
 
-      def most_popular_books(amount = 1)
-        top_objects_orders(:book, :reader, amount)
+      def top_books(amount = 1)
+        @orders.group_by(&:book).sort_by { |orders| -orders.uniq.size }.first(amount).map(&:first)
       end
 
       def number_of_readers_of_the_most_popular_books(amount = 3)
-        @orders.select { |order| most_popular_books(amount).include?(order.book) }.uniq(&:reader).count
+        @orders.select { |order| top_books(amount).include?(order.book) }.map(&:reader).uniq.size
       end
 
       def add(object)
@@ -45,13 +45,6 @@ module Lib
                 end
 
         group << object
-      end
-
-      private
-
-      def top_objects_orders(grouper, uniquer, amount)
-        @orders.group_by(&grouper).transform_values { |values| values.uniq(&uniquer).count }
-               .to_a.max_by(amount, &:last).map(&:first)
       end
     end
   end

@@ -3,6 +3,7 @@
 require 'yaml/store'
 require 'date'
 require 'pry'
+require_relative 'lib/entity/base_error'
 require_relative 'lib/modules/errors/error_empty_string'
 require_relative 'lib/modules/errors/error_negative_or_zero'
 require_relative 'lib/modules/errors/error_unexpected_class'
